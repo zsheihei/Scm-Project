@@ -2,6 +2,13 @@
 namespace app\scm\controller;
 
 use basic\SystemBasic;
+use service\CacheService;
+use service\UtilService;
+use think\Request;
+use think\Response;
+use think\Session;
+use think\Url;
+use think\Config;
 
 /**
  * 用户登录验证控制器
@@ -15,8 +22,31 @@ class Login extends SystemBasic
 		return view();
 	}
 
-	public function doLogin()
+	public function doLogin(Request $req)
 	{
-		return '{"accessGranted":false,"errors":"<strong>Invalid login!<\/strong><br \/>Please enter valid username and password (demo\/demo).<br \/>Failed attempts: 1"}';
+		//if (!$req->isPost()) return $this->redirect("index");
+		
+		list($account,$pwd,$verifycode) = UtilService::postMore([
+            'username','passwd','verifycode'
+        ],$req,true);
+        
+		if (Config::get("login_captcha") && !captcha_check($verifycode))
+			return json(Config::get("error_code.10000")) ;
+
+
+
+		
+		//return '{"accessGranted":false,"errors":"<strong>Invalid login!<\/strong>"}';
+	}
+
+	public function captcha()
+	{
+		ob_clean();
+        $captcha = new \think\captcha\Captcha([
+            'codeSet'=>'0123456789',
+            'length'=>4,
+            'fontSize'=>30
+        ]);
+        return $captcha->entry();
 	}
 }
