@@ -10,7 +10,7 @@ return [
         'auto_start'     => true,
     ],
     // 是否开启登录验证码
-    'login_captcha'     => true,
+    'login_captcha'     => false,
     'empty_controller'  => 'Index',
     'exception_handle'  => \basic\AdminException::class,
     // 视图输出字符串内容替换

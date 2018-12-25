@@ -33,7 +33,6 @@ class SystemAdmin extends ModelBasic
      * 用户登陆
      * @param string $account 账号
      * @param string $pwd 密码
-     * @param string $verify 验证码
      * @return bool 登陆成功失败
      */
     public static function login($account,$pwd)

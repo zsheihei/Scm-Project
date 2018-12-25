@@ -4,6 +4,7 @@ namespace app\scm\controller;
 use basic\SystemBasic;
 use service\CacheService;
 use service\UtilService;
+use app\scm\model\system\SystemAdmin;
 use think\Request;
 use think\Response;
 use think\Session;
@@ -29,11 +30,11 @@ class Login extends SystemBasic
 		list($account,$pwd,$verifycode) = UtilService::postMore([
             'username','passwd','verifycode'
         ],$req,true);
-        
+
 		if (Config::get("login_captcha") && !captcha_check($verifycode))
 			return json(Config::get("error_code.10000")) ;
-
-
+		$res = SystemAdmin::login($account,$pwd);
+		var_dump($res);
 
 		
 		//return '{"accessGranted":false,"errors":"<strong>Invalid login!<\/strong>"}';
