@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <title>SCM管理系统</title>
+    <!--[if lt IE 9]>
+    <meta http-equiv="refresh" content="0;ie.html" />
+    <![endif]-->
+    <link href="{ADMIN_PATH}/images/favicon.ico" rel="SHORTCUT ICON" />
+    <link href="{ADMIN_PATH}/images/favicon.ico" rel="Bookmark" />
+    <link href="{FRAME_PATH}/css/bootstrap.min.css" rel="stylesheet">
+    <link href="{FRAME_PATH}/css/font-awesome.min.css" rel="stylesheet">
+    <link href="{FRAME_PATH}/css/animate.min.css" rel="stylesheet">
+    <link href="{FRAME_PATH}/css/style.min.css" rel="stylesheet">
+</head>
+
+<body class="fixed-sidebar full-height-layout gray-bg" style="overflow:hidden">
+    <div id="wrapper">
+        <!--左侧导航开始-->
+        <nav class="navbar-default navbar-static-side" role="navigation">
+            <div class="nav-close"><i class="fa fa-times-circle"></i>
+            </div>
+            <div class="sidebar-collapse">
+                <ul class="nav" id="side-menu">
+                    <li class="nav-header">
+                        <div class="dropdown profile-element admin_open">
+                            <span>
+                            <img alt="image" class="imgbox" src="{ADMIN_PATH}/images/admin_logo.png" onerror="javascript:this.src='{ADMIN_PATH}/images/admin_logo.png';"/>
+                        </span>
+                            <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                            <span class="clear" style="margin-top: 20px;">
+                               <span class="block m-t-xs"><strong class="font-bold">admin</strong></span>
+                                <span class="text-muted text-xs block">超级管理员<b class="caret"></b></span>
+                            </span>
+                        </a>
+                            <ul class="dropdown-menu animated fadeInRight m-t-xs">
+                                <li><a class="J_menuItem admin_close" href="/admin/setting.system_admin/admininfo.html">个人资料</a>
+                                </li>
+                                <li><a class="admin_close" target="_blank" href="http://www.crmeb.com/">联系我们</a>
+                                </li>
+                                <li class="divider"></li>
+                                <li><a href="/admin/login/logout.html">安全退出</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="logo-element">SCM
+                        </div>
+                    </li>
+                    <!--  菜单  -->
+                    <li>
+                        <a href="#"><i class="fa fa-laptop"></i> <span class="nav-label">商品</span><span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li>
+                                <a class="J_menuItem" href="/admin/store.store_product/index/type/1.html"><i class="fa fa-"></i>商品管理</a>
+                            </li>
+                            <li>
+                                <a class="J_menuItem" href="/admin/store.store_category/index.html"><i class="fa fa-"></i>商品分类</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fa fa-building-o"></i> <span class="nav-label">订单</span><span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li>
+                                <a class="J_menuItem" href="/admin/order.store_order/index.html"><i class="fa fa-"></i>订单管理</a>
+                            </li>
+                            <li>
+                                <a href="#"><i class="fa fa-"></i>售后服务<span class="fa arrow"></span></a>
+                                <ul class="nav nav-third-level">
+                                    <li><a class="J_menuItem" href="/admin/store.store_product_reply/.html"><i class="fa fa-"></i> 评论管理</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fa fa-user"></i> <span class="nav-label">会员</span><span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li>
+                                <a class="J_menuItem" href="/admin/user.user/index.html"><i class="fa fa-"></i>会员管理</a>
+                            </li>
+                            <li>
+                                <a class="J_menuItem" href="/admin/user.user_notice/index.html"><i class="fa fa-"></i>站内通知</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fa fa-users"></i> <span class="nav-label">分销</span><span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li>
+                                <a class="J_menuItem" href="/admin/agent.agent_manage/index.html"><i class="fa fa-"></i>分销员管理</a>
+                            </li>
+                            <li>
+                                <a class="J_menuItem" href="/admin/setting.system_config/index/type/3/tab_id/9.html"><i class="fa fa-"></i>分销配置</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fa fa-paper-plane"></i> <span class="nav-label">营销</span><span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li>
+                                <a href="#"><i class="fa fa-"></i>优惠券<span class="fa arrow"></span></a>
+                                <ul class="nav nav-third-level">
+                                    <li><a class="J_menuItem" href="/admin/ump.store_coupon/index.html"><i class="fa fa-"></i> 优惠券制作</a></li>
+                                    <li><a class="J_menuItem" href="/admin/ump.store_coupon_issue/index.html"><i class="fa fa-"></i> 已发布管理</a></li>
+                                    <li><a class="J_menuItem" href="/admin/ump.store_coupon_user/index.html"><i class="fa fa-"></i> 会员领取记录</a></li>
+                                    <li><a class="J_menuItem" href="/admin/setting.system_config/index/type/3/tab_id/12.html"><i class="fa fa-"></i> 优惠券配置</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="#"><i class="fa fa-"></i>积分<span class="fa arrow"></span></a>
+                                <ul class="nav nav-third-level">
+                                    <li><a class="J_menuItem" href="/admin/setting.system_config/index/type/3/tab_id/11.html"><i class="fa fa-"></i> 积分配置</a></li>
+                                    <li><a class="J_menuItem" href="/admin/ump.user_point/index.html"><i class="fa fa-"></i> 积分日志</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="#"><i class="fa fa-"></i>秒杀管理<span class="fa arrow"></span></a>
+                                <ul class="nav nav-third-level">
+                                    <li><a class="J_menuItem" href="/admin/ump.store_seckill/index.html"><i class="fa fa-"></i> 限时秒杀</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fa fa-money"></i> <span class="nav-label">财务</span><span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li>
+                                <a href="#"><i class="fa fa-"></i>财务操作<span class="fa arrow"></span></a>
+                                <ul class="nav nav-third-level">
+                                    <li><a class="J_menuItem" href="/admin/finance.user_extract/index.html"><i class="fa fa-"></i> 提现申请</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="#"><i class="fa fa-"></i>财务记录<span class="fa arrow"></span></a>
+                                <ul class="nav nav-third-level">
+                                    <li><a class="J_menuItem" href="/admin/finance.user_recharge/index.html"><i class="fa fa-"></i> 充值记录</a></li>
+                                    <li><a class="J_menuItem" href="/admin/finance.finance/bill.html"><i class="fa fa-"></i> 资金监控</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="#"><i class="fa fa-"></i>佣金记录<span class="fa arrow"></span></a>
+                                <ul class="nav nav-third-level">
+                                    <li><a class="J_menuItem" href="/admin/finance.finance/commission_list.html"><i class="fa fa-"></i> 佣金记录</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fa fa-line-chart"></i> <span class="nav-label">数据</span><span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li>
+                                <a href="#"><i class="fa fa-"></i>交易数据<span class="fa arrow"></span></a>
+                                <ul class="nav nav-third-level">
+                                    <li><a class="J_menuItem" href="/admin/order.store_order/orderchart.html"><i class="fa fa-"></i> 订单统计</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fa fa-cubes"></i> <span class="nav-label">小程序</span><span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li>
+                                <a class="J_menuItem" href="/admin/setting.system_group_data/index/gid/48.html"><i class="fa fa-"></i>首页幻灯片</a>
+                            </li>
+                            <li>
+                                <a class="J_menuItem" href="/admin/setting.system_group_data/index/gid/47.html"><i class="fa fa-"></i>首页导航按钮</a>
+                            </li>
+                            <li>
+                                <a class="J_menuItem" href="/admin/setting.system_config/index_alone/type/2/tab_id/14.html"><i class="fa fa-"></i>小程序支付配置</a>
+                            </li>
+                            <li>
+                                <a class="J_menuItem" href="/admin/routine.routine_template/index.html"><i class="fa fa-"></i>小程序模板消息</a>
+                            </li>
+                            <li>
+                                <a class="J_menuItem" href="/admin/setting.system_config/index_alone/type/2/tab_id/7.html"><i class="fa fa-"></i>小程序配置</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fa fa-wechat"></i> <span class="nav-label">公众号</span><span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li>
+                                <a href="#"><i class="fa fa-"></i>公众号配置<span class="fa arrow"></span></a>
+                                <ul class="nav nav-third-level">
+                                    <li><a class="J_menuItem" href="/admin/setting.system_config/index/type/1/tab_id/2.html"><i class="fa fa-"></i> 公众号接口配置</a></li>
+                                    <li><a class="J_menuItem" href="/admin/wechat.menus/index.html"><i class="fa fa-"></i> 微信菜单</a></li>
+                                    <li><a class="J_menuItem" href="/admin/wechat.wechat_template/index.html"><i class="fa fa-"></i> 微信模板消息</a></li>
+                                    <li><a class="J_menuItem" href="/admin/setting.system_config/index/type/1/tab_id/4.html"><i class="fa fa-"></i> 公众号支付配置</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="#"><i class="fa fa-"></i>页面设置<span class="fa arrow"></span></a>
+                                <ul class="nav nav-third-level">
+                                    <li><a class="J_menuItem" href="/admin/setting.system_group_data/index/gid/36.html"><i class="fa fa-"></i> 商城首页滚动新闻</a></li>
+                                    <li><a class="J_menuItem" href="/admin/setting.system_group_data/index/gid/35.html"><i class="fa fa-"></i> 商城首页分类按钮</a></li>
+                                    <li><a class="J_menuItem" href="/admin/setting.system_group_data/index/gid/34.html"><i class="fa fa-"></i> 商城首页banner</a></li>
+                                    <li><a class="J_menuItem" href="/admin/setting.system_group_data/index/gid/32.html"><i class="fa fa-"></i> 个人中心菜单</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="#"><i class="fa fa-"></i>自动回复<span class="fa arrow"></span></a>
+                                <ul class="nav nav-third-level">
+                                    <li><a class="J_menuItem" href="/admin/wechat.reply/index/key/subscribe/title/%E7%BC%96%E8%BE%91%E6%97%A0%E9%85%8D%E7%BD%AE%E9%BB%98%E8%AE%A4%E5%9B%9E%E5%A4%8D.html"><i class="fa fa-"></i> 微信关注回复</a></li>
+                                    <li><a class="J_menuItem" href="/admin/wechat.reply/keyword.html"><i class="fa fa-"></i> 关键字回复</a></li>
+                                    <li><a class="J_menuItem" href="/admin/wechat.reply/index/key/default/title/%E7%BC%96%E8%BE%91%E6%97%A0%E6%95%88%E5%85%B3%E9%94%AE%E5%AD%97%E9%BB%98%E8%AE%A4%E5%9B%9E%E5%A4%8D.html"><i class="fa fa-"></i> 无效关键词回复</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a class="J_menuItem" href="/admin/wechat.store_service/index.html"><i class="fa fa-"></i>客服管理</a>
+                            </li>
+                            <li>
+                                <a class="J_menuItem" href="/admin/wechat.wechat_news_category/index.html"><i class="fa fa-"></i>图文管理</a>
+                            </li>
+                            <li>
+                                <a href="#"><i class="fa fa-"></i>微信用户管理<span class="fa arrow"></span></a>
+                                <ul class="nav nav-third-level">
+                                    <li><a class="J_menuItem" href="/admin/wechat.wechat_user/index.html"><i class="fa fa-"></i> 微信用户</a></li>
+                                    <li><a class="J_menuItem" href="/admin/wechat.wechat_user/group.html"><i class="fa fa-"></i> 用户分组</a></li>
+                                    <li><a class="J_menuItem" href="/admin/wechat.wechat_message/index.html"><i class="fa fa-"></i> 用户行为纪录</a></li>
+                                    <li><a class="J_menuItem" href="/admin/wechat.wechat_user/tag.html"><i class="fa fa-"></i> 用户标签</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fa fa-leanpub"></i> <span class="nav-label">内容</span><span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li>
+                                <a class="J_menuItem" href="/admin/article.article_category/index.html"><i class="fa fa-"></i>文章分类</a>
+                            </li>
+                            <li>
+                                <a class="J_menuItem" href="/admin/article.article/index.html"><i class="fa fa-"></i>文章管理</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fa fa-gear"></i> <span class="nav-label">设置</span><span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li>
+                                <a href="#"><i class="fa fa-"></i>管理权限<span class="fa arrow"></span></a>
+                                <ul class="nav nav-third-level">
+                                    <li><a class="J_menuItem" href="/admin/setting.system_role/index.html"><i class="fa fa-"></i> 身份管理</a></li>
+                                    <li><a class="J_menuItem" href="/admin/setting.system_admin/index.html"><i class="fa fa-"></i> 管理员列表</a></li>
+                                    <li><a class="J_menuItem" href="/admin/setting.system_menus/index/cate/12.html"><i class="fa fa-"></i> 权限规则</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="#"><i class="fa fa-"></i>系统设置<span class="fa arrow"></span></a>
+                                <ul class="nav nav-third-level">
+                                    <li><a class="J_menuItem" href="/admin/setting.system_group/index.html"><i class="fa fa-"></i> 组合数据</a></li>
+                                    <li><a class="J_menuItem" href="/admin/setting.system_config_tab/index.html"><i class="fa fa-"></i> 配置分类</a></li>
+                                    <li><a class="J_menuItem" href="/admin/setting.system_config/index/tab_id/1.html"><i class="fa fa-"></i> 系统配置</a></li>
+                                    <li><a class="J_menuItem" href="/admin/setting.system_notice/index.html"><i class="fa fa-"></i> 后台通知</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a class="J_menuItem" href="/admin/system.express/index.html"><i class="fa fa-"></i>物流公司</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fa fa-magic"></i> <span class="nav-label">维护</span><span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li>
+                                <a class="J_menuItem" href="/admin/system.system_log/index.html"><i class="fa fa-"></i>系统日志</a>
+                            </li>
+                            <li>
+                                <a class="J_menuItem" href="/admin/system.system_file/index.html"><i class="fa fa-"></i>文件校验</a>
+                            </li>
+                            <li>
+                                <a class="J_menuItem" href="/admin/system.system_file/opendir.html"><i class="fa fa-"></i>文件管理</a>
+                            </li>
+                            <li>
+                                <a class="J_menuItem" href="/admin/system.system_databackup/index.html"><i class="fa fa-"></i>数据库维护</a>
+                            </li>
+                            <li>
+                                <a class="J_menuItem" href="/admin/system.clear/index.html"><i class="fa fa-"></i>刷新缓存</a>
+                            </li>
+                            <li>
+                                <a class="J_menuItem" href="/admin/system.system_upgradeclient/index.html"><i class="fa fa-"></i>在线更新</a>
+                            </li>
+                            <li>
+                                <a class="J_menuItem" href="/admin/system.system_cleardata/index.html"><i class="fa fa-"></i>清除数据</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <!--左侧导航结束-->
+        <!--右侧部分开始-->
+        <div id="page-wrapper" class="gray-bg dashbard-1">
+            <div class="row content-tabs" @touchmove.prevent>
+                <button class="roll-nav roll-left navbar-minimalize" style="padding: 0;margin: 0;"><i class="fa fa-bars"></i></button>
+                <nav class="page-tabs J_menuTabs">
+                    <div class="page-tabs-content">
+                        <a href="javascript:;" class="active J_menuTab" data-id="/admin/index/main.html">首页</a>
+                    </div>
+                </nav>
+                <button class="roll-nav roll-right J_tabLeft"><i class="fa fa-backward"></i></button>
+                <button class="roll-nav roll-right J_tabRight"><i class="fa fa-forward"></i></button>
+                <a href="javascript:void(0);" class="roll-nav roll-right J_tabReply" title="返回"><i class="fa fa-reply"></i> </a>
+                <a href="javascript:void(0);" class="roll-nav roll-right J_tabRefresh" title="刷新"><i class="fa fa-refresh"></i> </a>
+                <a href="javascript:void(0);" class="roll-nav roll-right J_tabFullScreen" title="全屏"><i class="fa fa-arrows"></i> </a>
+                <a href="javascript:void(0);" class="roll-nav roll-right J_notice" data-toggle="dropdown" aria-expanded="true" title="消息"><i class="fa fa-bell"></i> <span class="badge badge-danger" id="msgcount">0</span></a>
+                <ul class="dropdown-menu dropdown-alerts dropdown-menu-right">
+                    <li>
+                        <a class="J_menuItem" href="/admin/order.store_order/index.html">
+                        <div>
+                            <i class="fa fa-building-o"></i> 待发货
+                            <span class="pull-right text-muted small" id="ordernum">0个</span>
+                        </div>
+                    </a>
+                    </li>
+                    <li class="divider"></li>
+                    <li>
+                        <a class="J_menuItem" href="/admin/store.store_product/index/type/5.html">
+                        <div>
+                            <i class="fa fa-pagelines"></i> 库存预警 <span class="pull-right text-muted small" id="inventory">0个</span>
+                        </div>
+                    </a>
+                    </li>
+                    <li class="divider"></li>
+                    <li>
+                        <a class="J_menuItem" href="/admin/store.store_product_reply/index.html">
+                        <div>
+                            <i class="fa fa-comments-o"></i> 新评论 <span class="pull-right text-muted small" id="commentnum">0个</span>
+                        </div>
+                    </a>
+                    </li>
+                    <li class="divider"></li>
+                    <li>
+                        <a class="J_menuItem" href="/admin/finance.user_extract/index.html">
+                        <div>
+                            <i class="fa fa-cny"></i> 申请提现 <span class="pull-right text-muted small" id="reflectnum">0个</span>
+                        </div>
+                    </a>
+                    </li>
+                </ul>
+                <a href="javascript:void(0);" class="roll-nav roll-right J_tabSetting right-sidebar-toggle" title="更多"><i class="fa fa-tasks"></i></a>
+                <div class="btn-group roll-nav roll-right">
+                    <button class="dropdown J_tabClose" data-toggle="dropdown">关闭<span class="caret"></span>
+                    </button>
+                    <ul role="menu" class="dropdown-menu dropdown-menu-right">
+                        <li class="J_tabShowActive"><a>定位当前选项卡</a>
+                        </li>
+                        <li class="divider"></li>
+                        <li class="J_tabCloseAll"><a>关闭全部选项卡</a>
+                        </li>
+                        <li class="J_tabCloseOther"><a>关闭其他选项卡</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <!--内容展示模块-->
+            <div class="row J_mainContent" id="content-main">
+                <iframe class="J_iframe" name="iframe_crmeb_main" width="100%" height="100%" src="/scm/index/main/" frameborder="0" data-id="main.html" seamless></iframe>
+            </div>
+            <!--底部版权-->
+            <div class="footer" @touchmove.prevent>
+                <div class="pull-right"><a href="#" target="_blank">© 2016-2019 Supply Chain Management SCM.Cence Software Co., Ltd.</a>
+                </div>
+            </div>
+        </div>
+        <!--右侧部分结束-->
+        <!--右侧边栏开始-->
+        <div id="right-sidebar">
+            <div class="sidebar-container">
+                <ul class="nav nav-tabs navs-3">
+                    <li class="active">
+                        <a data-toggle="tab" href="#tab-1">
+                        <i class="fa fa-bell"></i>通知
+                    </a>
+                    </li>
+                    <li class="">
+                        <a data-toggle="tab" href="#tab-2">
+                        <i class="fa fa-gear"></i> 设置
+                    </a>
+                    </li>
+                </ul>
+                <div class="tab-content">
+                    <div id="tab-1" class="tab-pane active">
+                        <div class="sidebar-title">
+                            <h3><i class="fa fa-comments-o"></i> 最新通知</h3>
+                            <small><i class="fa fa-tim"></i> 您当前有0条未读信息</small>
+                        </div>
+                        <div>
+                            <!--<div class="sidebar-message">
+                            <a href="#">
+                                <div class="pull-left text-center">
+                                    <img alt="image" class="img-circle message-avatar" src="http://ozwpnu2pa.bkt.clouddn.com/a1.jpg">
+                                    <div class="m-t-xs">
+                                        <i class="fa fa-star text-warning"></i> <i class="fa fa-star text-warning"></i>
+                                    </div>
+                                </div>
+                                <div class="media-body">
+
+                                    据天津日报报道：瑞海公司董事长于学伟，副董事长董社轩等10人在13日上午已被控制。 <br>
+                                    <small class="text-muted">今天 4:21 <a class="J_menuItem admin_close" href="/admin/setting.system_admin/admininfo.html" data-index="0">【查看】</a></small>
+                                </div>
+                            </a>
+                        </div>-->
+                        </div>
+                    </div>
+                    <div id="tab-2" class="tab-pane ">
+                        <div class="sidebar-title">
+                            <h3><i class="fa fa-comments-o"></i> 提示</h3>
+                            <small><i class="fa fa-tim"></i> 你可以从这里选择和预览主题的布局和样式，这些设置会被保存在本地，下次打开的时候会直接应用这些设置。</small>
+                        </div>
+                        <div class="skin-setttings">
+                            <div class="title">设置</div>
+                            <div class="setings-item">
+                                <span>收起左侧菜单</span>
+                                <div class="switch">
+                                    <div class="onoffswitch">
+                                        <input type="checkbox" name="collapsemenu" class="onoffswitch-checkbox" id="collapsemenu">
+                                        <label class="onoffswitch-label" for="collapsemenu">
+                                            <span class="onoffswitch-inner"></span> <span class="onoffswitch-switch"></span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="setings-item">
+                                <span>固定宽度</span>
+                                <div class="switch">
+                                    <div class="onoffswitch">
+                                        <input type="checkbox" name="boxedlayout" class="onoffswitch-checkbox" id="boxedlayout">
+                                        <label class="onoffswitch-label" for="boxedlayout">
+                                            <span class="onoffswitch-inner"></span> <span class="onoffswitch-switch"></span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="setings-item">
+                                <span>菜单点击刷新</span>
+                                <div class="switch">
+                                    <div class="onoffswitch">
+                                        <input type="checkbox" name="refresh" class="onoffswitch-checkbox" id="refresh">
+                                        <label class="onoffswitch-label" for="refresh">
+                                            <span class="onoffswitch-inner"></span> <span class="onoffswitch-switch"></span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="title">皮肤选择</div>
+                            <div class="setings-item default-skin nb">
+                                <span class="skin-name ">
+                         <a href="#" class="s-skin-0">
+                             默认皮肤
+                         </a>
+                    </span>
+                            </div>
+                            <div class="setings-item blue-skin nb">
+                                <span class="skin-name ">
+                        <a href="#" class="s-skin-1">
+                            蓝色主题
+                        </a>
+                    </span>
+                            </div>
+                            <div class="setings-item yellow-skin nb">
+                                <span class="skin-name ">
+                        <a href="#" class="s-skin-3">
+                            黄色/紫色主题
+                        </a>
+                    </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--右侧边栏结束-->
+    </div>
+    <!--vue调用不能删除-->
+    <div id="vm"></div>
+    <script src="{ADMIN_PATH}/frame/js/jquery.min.js"></script>
+    <script src="{ADMIN_PATH}/frame/js/bootstrap.min.js"></script>
+    <script src="{ADMIN_PATH}/frame/js/plugins/metisMenu/jquery.metisMenu.js"></script>
+    <script src="{ADMIN_PATH}/frame/js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+    <script src="{ADMIN_PATH}/frame/js/plugins/layer/layer.min.js"></script>
+    <script src="{ADMIN_PATH}/frame/js/hplus.min.js"></script>
+    <script src="{ADMIN_PATH}/frame/js/contabs.min.js"></script>
+    <script src="{ADMIN_PATH}/frame/js/plugins/pace/pace.min.js"></script>
+    <!--<script type="text/javascript" src="/static/plug/basket.js"></script>-->
+    <script type="text/javascript" src="{PLUG_PATH}/requirejs/require.js"></script>
+    <script>
+    requirejs.config({
+        map: {
+            '*': {
+                'css': "{PLUG_PATH}/requirejs/require-css.js"
+            }
+        },
+        shim: {
+            'iview': {
+                deps: ['css!iviewcss']
+            },
+            'layer': {
+                deps: ['css!layercss']
+            }
+        },
+        baseUrl: '//' + location.hostname + "/",
+        paths: {
+            'static': 'static',
+            'system': 'system',
+            'vue': '{PLUG_PATH}/vue/dist/vue.min',
+            'axios': '{PLUG_PATH}/axios.min',
+            'iview': '{PLUG_PATH}/iview/dist/iview.min',
+            'iviewcss': '{PLUG_PATH}/iview/dist/styles/iview',
+            'lodash': '{PLUG_PATH}/lodash',
+            'layer': '{PLUG_PATH}/layer/layer',
+            'layercss': '{PLUG_PATH}/layer/theme/default/layer',
+            'jquery': '{PLUG_PATH}/jquery/jquery.min',
+            'moment': '{PLUG_PATH}/moment',
+            //            'mpBuilder':'system/util/mpBuilder',
+            'sweetalert': '{PLUG_PATH}/sweetalert2/sweetalert2.all.min'
+
+        },
+        basket: {
+            excludes: ['{ADMIN_PATH}/js/index', '{ADMIN_PATH}/util/mpVueComponent', '{ADMIN_PATH}/util/mpVuePackage']
+            //            excludes:['system/util/mpFormBuilder','system/js/index','system/util/mpVueComponent','system/util/mpVuePackage']
+        }
+    });
+    </script>
+    <script type="text/javascript" src="{ADMIN_PATH}/util/mpFrame.js"></script>
+    <script src="{ADMIN_PATH}/js/index.js"></script>
+    <script>
+    /*$(function() {
+        function getnotice() {
+            $.getJSON("/admin/index/jnotice.html", function(res) {
+                console.log(res);
+                var info = eval("(" + res + ")");
+                var data = info.data;
+                $('#msgcount').html(data.msgcount);
+                $('#ordernum').html(data.ordernum + '个');
+                $('#inventory').html(data.inventory + '个');
+                $('#commentnum').html(data.commentnum + '个');
+                $('#reflectnum').html(data.reflectnum + '个');
+            });
+        }
+        getnotice();
+        setInterval(getnotice, 3000);
+    });*/
+    </script>
+</body>
+
+</html>
