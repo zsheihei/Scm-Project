@@ -3,8 +3,8 @@
 namespace app\scm\controller;
 
 use app\scm\model\system\SystemAdmin;
-// use app\admin\model\system\SystemMenus;
-// use app\admin\model\system\SystemRole;
+use app\scm\model\system\SystemMenus;
+use app\scm\model\system\SystemRole;
 use basic\SystemBasic;
 use behavior\system\SystemBehavior;
 use service\HookService;

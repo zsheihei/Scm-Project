@@ -2,8 +2,8 @@
 
 namespace behavior\system;
 
-use app\admin\model\system\SystemAdmin;
-use app\admin\model\system\SystemLog;
+use app\scm\model\system\SystemAdmin;
+use app\scm\model\system\SystemLog;
 use think\Request;
 
 /**

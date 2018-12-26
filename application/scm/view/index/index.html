@@ -33,17 +33,17 @@
                         </span>
                             <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                             <span class="clear" style="margin-top: 20px;">
-                               <span class="block m-t-xs"><strong class="font-bold">admin</strong></span>
-                                <span class="text-muted text-xs block">超级管理员<b class="caret"></b></span>
+                               <span class="block m-t-xs"><strong class="font-bold">{$_admin['real_name']}</strong></span>
+                                <span class="text-muted text-xs block">{$role_name.role_name ? $role_name.role_name : '管理员'}<b class="caret"></b></span>
                             </span>
                         </a>
                             <ul class="dropdown-menu animated fadeInRight m-t-xs">
-                                <li><a class="J_menuItem admin_close" href="/admin/setting.system_admin/admininfo.html">个人资料</a>
+                                <li><a class="J_menuItem admin_close" href="{:Url('Users/Info')}">个人资料</a>
                                 </li>
-                                <li><a class="admin_close" target="_blank" href="http://www.crmeb.com/">联系我们</a>
+                                <li><a class="admin_close" target="_blank" href="https://www.cencesoft.com/">联系我们</a>
                                 </li>
                                 <li class="divider"></li>
-                                <li><a href="/admin/login/logout.html">安全退出</a>
+                                <li><a href="{:Url('Login/logout')}">安全退出</a>
                                 </li>
                             </ul>
                         </div>
@@ -51,243 +51,29 @@
                         </div>
                     </li>
                     <!--  菜单  -->
-                    <li>
-                        <a href="#"><i class="fa fa-laptop"></i> <span class="nav-label">商品</span><span class="fa arrow"></span></a>
-                        <ul class="nav nav-second-level">
-                            <li>
-                                <a class="J_menuItem" href="/admin/store.store_product/index/type/1.html"><i class="fa fa-"></i>商品管理</a>
-                            </li>
-                            <li>
-                                <a class="J_menuItem" href="/admin/store.store_category/index.html"><i class="fa fa-"></i>商品分类</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="#"><i class="fa fa-building-o"></i> <span class="nav-label">订单</span><span class="fa arrow"></span></a>
-                        <ul class="nav nav-second-level">
-                            <li>
-                                <a class="J_menuItem" href="/admin/order.store_order/index.html"><i class="fa fa-"></i>订单管理</a>
-                            </li>
-                            <li>
-                                <a href="#"><i class="fa fa-"></i>售后服务<span class="fa arrow"></span></a>
-                                <ul class="nav nav-third-level">
-                                    <li><a class="J_menuItem" href="/admin/store.store_product_reply/.html"><i class="fa fa-"></i> 评论管理</a></li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="#"><i class="fa fa-user"></i> <span class="nav-label">会员</span><span class="fa arrow"></span></a>
-                        <ul class="nav nav-second-level">
-                            <li>
-                                <a class="J_menuItem" href="/admin/user.user/index.html"><i class="fa fa-"></i>会员管理</a>
-                            </li>
-                            <li>
-                                <a class="J_menuItem" href="/admin/user.user_notice/index.html"><i class="fa fa-"></i>站内通知</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="#"><i class="fa fa-users"></i> <span class="nav-label">分销</span><span class="fa arrow"></span></a>
-                        <ul class="nav nav-second-level">
-                            <li>
-                                <a class="J_menuItem" href="/admin/agent.agent_manage/index.html"><i class="fa fa-"></i>分销员管理</a>
-                            </li>
-                            <li>
-                                <a class="J_menuItem" href="/admin/setting.system_config/index/type/3/tab_id/9.html"><i class="fa fa-"></i>分销配置</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="#"><i class="fa fa-paper-plane"></i> <span class="nav-label">营销</span><span class="fa arrow"></span></a>
-                        <ul class="nav nav-second-level">
-                            <li>
-                                <a href="#"><i class="fa fa-"></i>优惠券<span class="fa arrow"></span></a>
-                                <ul class="nav nav-third-level">
-                                    <li><a class="J_menuItem" href="/admin/ump.store_coupon/index.html"><i class="fa fa-"></i> 优惠券制作</a></li>
-                                    <li><a class="J_menuItem" href="/admin/ump.store_coupon_issue/index.html"><i class="fa fa-"></i> 已发布管理</a></li>
-                                    <li><a class="J_menuItem" href="/admin/ump.store_coupon_user/index.html"><i class="fa fa-"></i> 会员领取记录</a></li>
-                                    <li><a class="J_menuItem" href="/admin/setting.system_config/index/type/3/tab_id/12.html"><i class="fa fa-"></i> 优惠券配置</a></li>
-                                </ul>
-                            </li>
-                            <li>
-                                <a href="#"><i class="fa fa-"></i>积分<span class="fa arrow"></span></a>
-                                <ul class="nav nav-third-level">
-                                    <li><a class="J_menuItem" href="/admin/setting.system_config/index/type/3/tab_id/11.html"><i class="fa fa-"></i> 积分配置</a></li>
-                                    <li><a class="J_menuItem" href="/admin/ump.user_point/index.html"><i class="fa fa-"></i> 积分日志</a></li>
-                                </ul>
-                            </li>
-                            <li>
-                                <a href="#"><i class="fa fa-"></i>秒杀管理<span class="fa arrow"></span></a>
-                                <ul class="nav nav-third-level">
-                                    <li><a class="J_menuItem" href="/admin/ump.store_seckill/index.html"><i class="fa fa-"></i> 限时秒杀</a></li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="#"><i class="fa fa-money"></i> <span class="nav-label">财务</span><span class="fa arrow"></span></a>
-                        <ul class="nav nav-second-level">
-                            <li>
-                                <a href="#"><i class="fa fa-"></i>财务操作<span class="fa arrow"></span></a>
-                                <ul class="nav nav-third-level">
-                                    <li><a class="J_menuItem" href="/admin/finance.user_extract/index.html"><i class="fa fa-"></i> 提现申请</a></li>
-                                </ul>
-                            </li>
-                            <li>
-                                <a href="#"><i class="fa fa-"></i>财务记录<span class="fa arrow"></span></a>
-                                <ul class="nav nav-third-level">
-                                    <li><a class="J_menuItem" href="/admin/finance.user_recharge/index.html"><i class="fa fa-"></i> 充值记录</a></li>
-                                    <li><a class="J_menuItem" href="/admin/finance.finance/bill.html"><i class="fa fa-"></i> 资金监控</a></li>
-                                </ul>
-                            </li>
-                            <li>
-                                <a href="#"><i class="fa fa-"></i>佣金记录<span class="fa arrow"></span></a>
-                                <ul class="nav nav-third-level">
-                                    <li><a class="J_menuItem" href="/admin/finance.finance/commission_list.html"><i class="fa fa-"></i> 佣金记录</a></li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="#"><i class="fa fa-line-chart"></i> <span class="nav-label">数据</span><span class="fa arrow"></span></a>
-                        <ul class="nav nav-second-level">
-                            <li>
-                                <a href="#"><i class="fa fa-"></i>交易数据<span class="fa arrow"></span></a>
-                                <ul class="nav nav-third-level">
-                                    <li><a class="J_menuItem" href="/admin/order.store_order/orderchart.html"><i class="fa fa-"></i> 订单统计</a></li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="#"><i class="fa fa-cubes"></i> <span class="nav-label">小程序</span><span class="fa arrow"></span></a>
-                        <ul class="nav nav-second-level">
-                            <li>
-                                <a class="J_menuItem" href="/admin/setting.system_group_data/index/gid/48.html"><i class="fa fa-"></i>首页幻灯片</a>
-                            </li>
-                            <li>
-                                <a class="J_menuItem" href="/admin/setting.system_group_data/index/gid/47.html"><i class="fa fa-"></i>首页导航按钮</a>
-                            </li>
-                            <li>
-                                <a class="J_menuItem" href="/admin/setting.system_config/index_alone/type/2/tab_id/14.html"><i class="fa fa-"></i>小程序支付配置</a>
-                            </li>
-                            <li>
-                                <a class="J_menuItem" href="/admin/routine.routine_template/index.html"><i class="fa fa-"></i>小程序模板消息</a>
-                            </li>
-                            <li>
-                                <a class="J_menuItem" href="/admin/setting.system_config/index_alone/type/2/tab_id/7.html"><i class="fa fa-"></i>小程序配置</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="#"><i class="fa fa-wechat"></i> <span class="nav-label">公众号</span><span class="fa arrow"></span></a>
-                        <ul class="nav nav-second-level">
-                            <li>
-                                <a href="#"><i class="fa fa-"></i>公众号配置<span class="fa arrow"></span></a>
-                                <ul class="nav nav-third-level">
-                                    <li><a class="J_menuItem" href="/admin/setting.system_config/index/type/1/tab_id/2.html"><i class="fa fa-"></i> 公众号接口配置</a></li>
-                                    <li><a class="J_menuItem" href="/admin/wechat.menus/index.html"><i class="fa fa-"></i> 微信菜单</a></li>
-                                    <li><a class="J_menuItem" href="/admin/wechat.wechat_template/index.html"><i class="fa fa-"></i> 微信模板消息</a></li>
-                                    <li><a class="J_menuItem" href="/admin/setting.system_config/index/type/1/tab_id/4.html"><i class="fa fa-"></i> 公众号支付配置</a></li>
-                                </ul>
-                            </li>
-                            <li>
-                                <a href="#"><i class="fa fa-"></i>页面设置<span class="fa arrow"></span></a>
-                                <ul class="nav nav-third-level">
-                                    <li><a class="J_menuItem" href="/admin/setting.system_group_data/index/gid/36.html"><i class="fa fa-"></i> 商城首页滚动新闻</a></li>
-                                    <li><a class="J_menuItem" href="/admin/setting.system_group_data/index/gid/35.html"><i class="fa fa-"></i> 商城首页分类按钮</a></li>
-                                    <li><a class="J_menuItem" href="/admin/setting.system_group_data/index/gid/34.html"><i class="fa fa-"></i> 商城首页banner</a></li>
-                                    <li><a class="J_menuItem" href="/admin/setting.system_group_data/index/gid/32.html"><i class="fa fa-"></i> 个人中心菜单</a></li>
-                                </ul>
-                            </li>
-                            <li>
-                                <a href="#"><i class="fa fa-"></i>自动回复<span class="fa arrow"></span></a>
-                                <ul class="nav nav-third-level">
-                                    <li><a class="J_menuItem" href="/admin/wechat.reply/index/key/subscribe/title/%E7%BC%96%E8%BE%91%E6%97%A0%E9%85%8D%E7%BD%AE%E9%BB%98%E8%AE%A4%E5%9B%9E%E5%A4%8D.html"><i class="fa fa-"></i> 微信关注回复</a></li>
-                                    <li><a class="J_menuItem" href="/admin/wechat.reply/keyword.html"><i class="fa fa-"></i> 关键字回复</a></li>
-                                    <li><a class="J_menuItem" href="/admin/wechat.reply/index/key/default/title/%E7%BC%96%E8%BE%91%E6%97%A0%E6%95%88%E5%85%B3%E9%94%AE%E5%AD%97%E9%BB%98%E8%AE%A4%E5%9B%9E%E5%A4%8D.html"><i class="fa fa-"></i> 无效关键词回复</a></li>
-                                </ul>
-                            </li>
-                            <li>
-                                <a class="J_menuItem" href="/admin/wechat.store_service/index.html"><i class="fa fa-"></i>客服管理</a>
-                            </li>
-                            <li>
-                                <a class="J_menuItem" href="/admin/wechat.wechat_news_category/index.html"><i class="fa fa-"></i>图文管理</a>
-                            </li>
-                            <li>
-                                <a href="#"><i class="fa fa-"></i>微信用户管理<span class="fa arrow"></span></a>
-                                <ul class="nav nav-third-level">
-                                    <li><a class="J_menuItem" href="/admin/wechat.wechat_user/index.html"><i class="fa fa-"></i> 微信用户</a></li>
-                                    <li><a class="J_menuItem" href="/admin/wechat.wechat_user/group.html"><i class="fa fa-"></i> 用户分组</a></li>
-                                    <li><a class="J_menuItem" href="/admin/wechat.wechat_message/index.html"><i class="fa fa-"></i> 用户行为纪录</a></li>
-                                    <li><a class="J_menuItem" href="/admin/wechat.wechat_user/tag.html"><i class="fa fa-"></i> 用户标签</a></li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="#"><i class="fa fa-leanpub"></i> <span class="nav-label">内容</span><span class="fa arrow"></span></a>
-                        <ul class="nav nav-second-level">
-                            <li>
-                                <a class="J_menuItem" href="/admin/article.article_category/index.html"><i class="fa fa-"></i>文章分类</a>
-                            </li>
-                            <li>
-                                <a class="J_menuItem" href="/admin/article.article/index.html"><i class="fa fa-"></i>文章管理</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="#"><i class="fa fa-gear"></i> <span class="nav-label">设置</span><span class="fa arrow"></span></a>
-                        <ul class="nav nav-second-level">
-                            <li>
-                                <a href="#"><i class="fa fa-"></i>管理权限<span class="fa arrow"></span></a>
-                                <ul class="nav nav-third-level">
-                                    <li><a class="J_menuItem" href="/admin/setting.system_role/index.html"><i class="fa fa-"></i> 身份管理</a></li>
-                                    <li><a class="J_menuItem" href="/admin/setting.system_admin/index.html"><i class="fa fa-"></i> 管理员列表</a></li>
-                                    <li><a class="J_menuItem" href="/admin/setting.system_menus/index/cate/12.html"><i class="fa fa-"></i> 权限规则</a></li>
-                                </ul>
-                            </li>
-                            <li>
-                                <a href="#"><i class="fa fa-"></i>系统设置<span class="fa arrow"></span></a>
-                                <ul class="nav nav-third-level">
-                                    <li><a class="J_menuItem" href="/admin/setting.system_group/index.html"><i class="fa fa-"></i> 组合数据</a></li>
-                                    <li><a class="J_menuItem" href="/admin/setting.system_config_tab/index.html"><i class="fa fa-"></i> 配置分类</a></li>
-                                    <li><a class="J_menuItem" href="/admin/setting.system_config/index/tab_id/1.html"><i class="fa fa-"></i> 系统配置</a></li>
-                                    <li><a class="J_menuItem" href="/admin/setting.system_notice/index.html"><i class="fa fa-"></i> 后台通知</a></li>
-                                </ul>
-                            </li>
-                            <li>
-                                <a class="J_menuItem" href="/admin/system.express/index.html"><i class="fa fa-"></i>物流公司</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="#"><i class="fa fa-magic"></i> <span class="nav-label">维护</span><span class="fa arrow"></span></a>
-                        <ul class="nav nav-second-level">
-                            <li>
-                                <a class="J_menuItem" href="/admin/system.system_log/index.html"><i class="fa fa-"></i>系统日志</a>
-                            </li>
-                            <li>
-                                <a class="J_menuItem" href="/admin/system.system_file/index.html"><i class="fa fa-"></i>文件校验</a>
-                            </li>
-                            <li>
-                                <a class="J_menuItem" href="/admin/system.system_file/opendir.html"><i class="fa fa-"></i>文件管理</a>
-                            </li>
-                            <li>
-                                <a class="J_menuItem" href="/admin/system.system_databackup/index.html"><i class="fa fa-"></i>数据库维护</a>
-                            </li>
-                            <li>
-                                <a class="J_menuItem" href="/admin/system.clear/index.html"><i class="fa fa-"></i>刷新缓存</a>
-                            </li>
-                            <li>
-                                <a class="J_menuItem" href="/admin/system.system_upgradeclient/index.html"><i class="fa fa-"></i>在线更新</a>
-                            </li>
-                            <li>
-                                <a class="J_menuItem" href="/admin/system.system_cleardata/index.html"><i class="fa fa-"></i>清除数据</a>
-                            </li>
-                        </ul>
-                    </li>
+                    {volist name="menuList" id="menu"}
+                    <?php if(isset($menu['child']) && count($menu['child']) > 0){ ?>
+                        <li>
+                            <a href="#"><i class="fa fa-{$menu.icon}"></i> <span class="nav-label">{$menu.menu_name}</span><span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                {volist name="menu.child" id="child"}
+                                <li>
+                                    <?php if(isset($child['child']) && count($child['child']) > 0){ ?>
+                                        <a href="#"><i class="fa fa-{$child.icon}"></i>{$child.menu_name}<span class="fa arrow"></span></a>
+                                        <ul class="nav nav-third-level">
+                                            {volist name="child.child" id="song"}
+                                            <li><a class="J_menuItem" href="{$song.url}"><i class="fa fa-{$song.icon}"></i> {$song.menu_name}</a></li>
+                                            {/volist}
+                                        </ul>
+                                    <?php }else{ ?>
+                                        <a class="J_menuItem" href="{$child.url}"><i class="fa fa-{$child.icon}"></i>{$child.menu_name}</a>
+                                    <?php } ?>
+                                </li>
+                                {/volist}
+                            </ul>
+                        </li>
+                    <?php } ?>
+                {/volist}
                 </ul>
             </div>
         </nav>

@@ -32,12 +32,24 @@ class Login extends SystemBasic
         ],$req,true);
 
 		if (Config::get("login_captcha") && !captcha_check($verifycode))
-			return json(Config::get("error_code.10000")) ;
-		$res = SystemAdmin::login($account,$pwd);
-		var_dump($res);
-
+			return json(Config::get("error_code.10001")) ;
 		
-		//return '{"accessGranted":false,"errors":"<strong>Invalid login!<\/strong>"}';
+		$error  = Session::get('login_error')?:['num'=>0,'time'=>time()];
+
+        if($error['num'] >=5 && $error['time'] > strtotime('- 5 minutes'))
+            return json(Config::get("error_code.10004")) ;
+
+        $res = SystemAdmin::login($account,$pwd);
+        if ($res === 10000) {
+        	Session::set('login_error',null);
+            return json(Config::get("error_code.10000"));
+        }
+        else {
+        	$error['num'] += 1;
+            $error['time'] = time();
+            Session::set('login_error',$error);
+            return json(Config::get("error_code.".$res));
+        }
 	}
 
 	public function captcha()
@@ -49,5 +61,11 @@ class Login extends SystemBasic
             'fontSize'=>30
         ]);
         return $captcha->entry();
+	}
+
+	public function logout($value='')
+	{
+		SystemAdmin::clearLoginInfo();
+        $this->redirect('Login/index');
 	}
 }

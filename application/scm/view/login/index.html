@@ -89,16 +89,16 @@
                                     verifycode: $(form).find('#verifycode').val(),
                                 },
                                 success: function(resp) {
+
                                     show_loading_bar({
                                         delay: .5,
                                         pct: 100,
                                         finish: function() {
                                             if (resp.errcode === 0) {
-                                                window.location.href = '/';
+                                                window.location.href = "{:Url('Index/index')}";
                                             } else {
-
                                                 $("#verify_img").trigger("click");
-                                                toastr.error("<strong>"+resp.errmsg+"</strong>请检查您的输入后, 点击登录按钮重试. ", "登录验证失败!", opts);
+                                                toastr.error("<strong>"+resp.errmsg+"</strong>请检查您的输入后, 点击登录按钮重试。 ", "登录验证失败!", opts);
                                                 $("#passwd").select();
                                             }
                                         }
