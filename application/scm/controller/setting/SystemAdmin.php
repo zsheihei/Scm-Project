@@ -85,7 +85,7 @@ class SystemAdmin extends Auth
         if(!$data['account']) return Json::fail('请输入管理员账号');
         if(!$data['roles']) return Json::fail('请选择至少一个管理员身份');
         if(!$data['pwd']) return Json::fail('请输入管理员登陆密码');
-        if($data['pwd'] != $data['conf_pwd']) return Json::fail('两次输入密码不想同');
+        if($data['pwd'] != $data['conf_pwd']) return Json::fail('两次输入密码不相同');
         if(AdminModel::be($data['account'],'account')) return Json::fail('管理员账号已存在');
         $data['pwd'] = md5($data['pwd']);
         unset($data['conf_pwd']);
@@ -118,7 +118,7 @@ class SystemAdmin extends Auth
             }
             return $options;
         })->multiple(1);
-        $f[] = Form::radio('status','状态',1)->options([['label'=>'开启','value'=>1],['label'=>'关闭','value'=>0]]);
+        $f[] = Form::radio('status','状态',$admin->status)->options([['label'=>'开启','value'=>1],['label'=>'关闭','value'=>0]]);
         $form = Form::make_post_form('编辑管理员',$f,Url::build('update',compact('id')));
         $this->assign(compact('form'));
         return $this->fetch('public/form-builder');
