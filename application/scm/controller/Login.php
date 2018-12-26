@@ -50,6 +50,8 @@ class Login extends SystemBasic
             Session::set('login_error',$error);
             return json(Config::get("error_code.".$res));
         }
+
+        
 	}
 
 	public function captcha()

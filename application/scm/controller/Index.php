@@ -13,7 +13,7 @@ class Index extends Auth
             'menuList'=>SystemMenus::menuList(),
             'role_name'=>SystemRole::where('id',$roles[0])->field('role_name')->find()
         ]);
-
+        
         return view();
     }
 
