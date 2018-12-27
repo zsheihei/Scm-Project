@@ -18,6 +18,8 @@ class SystemMenus extends ModelBasic
 
     public static $accessStatus = [1=>'管理员可用',0=>'管理员不可用'];
 
+    protected $resultSetType = 'collection';
+
     public static function legalWhere($where = [])
     {
         $where['is_show'] = 1;
@@ -67,6 +69,12 @@ class SystemMenus extends ModelBasic
     {
         $ruleList = self::order('sort DESC')->select();
         return self::tidyMenuTier(false,$ruleList);
+    }
+
+    public static function ruleListForJson()
+    {
+        $ruleList = \think\Db::query("SELECT id,menu_name,module,controller,action,is_show,icon,pid FROM system_menus ORDER BY sort DESC");
+        return $ruleList;
     }
 
     public static function rolesByRuleList($rules)

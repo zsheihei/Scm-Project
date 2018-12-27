@@ -1,0 +1,149 @@
+{extend name="public/container"}
+{block name="content"}
+<div class="row">
+    <div class="col-sm-12">
+        <div class="ibox">
+            <div class="ibox-title">
+                <a type="button" class="btn btn-w-m btn-primary" href="{:Url('index')}">菜单首页</a>
+                <button type="button" class="btn btn-w-m btn-primary" onclick="$eb.createModalFrame(this.innerText,'{:Url('create',array('cid'=>0))}')">添加菜单</button>
+                <div class="ibox-tools">
+                </div>
+            </div>
+            <div class="ibox-content">
+                <div class="row">
+                    <div class="m-b m-l">
+                        <form action="" class="form-inline">
+
+                            <select name="is_show" aria-controls="editable" class="form-control input-sm">
+                                <option value="">是否显示</option>
+                                <option value="1">显示</option>
+                                <option value="0">不显示</option>
+                            </select>
+                            <div class="input-group">
+                                <input type="text" name="keyword" id="edt-search" value="" placeholder="请输入关键词" class="input-sm form-control"> 
+                                <span class="input-group-btn">
+                                    <button type="button" class="btn btn-sm btn-primary" id="btn-search"> <i class="fa fa-search"></i>搜索</button>
+                                </span>
+                            </div>
+                             <div class="input-group">
+                                <span class="input-group-btn">
+                                    <button class="btn btn-sm btn-primary" type="button" id="btn-expand"><i class="fa fa-folder-open"></i> 全部展开</button>
+                                    <button class="btn btn-sm btn-primary" type="button" id="btn-fold"><i class="fa fa-folder"></i> 全部折叠</button>
+                                </span>
+                            </div>
+                        </form>
+                    </div>
+                   
+                    <table id="auth-table" class="table table-striped  table-bordered" lay-filter="auth-table"></table>
+                </div>
+                <script>
+                layui.config({
+                    base: '{MODULE_PATH}/'
+                }).extend({
+                    treetable: 'treetable-lay/treetable'
+                }).use(['table', 'treetable'], function() {
+                    var $ = layui.jquery;
+                    var table = layui.table;
+                    var treetable = layui.treetable;
+
+                    // 渲染表格
+                    layer.load(2);
+                    treetable.render({
+                        treeColIndex: 1,
+                        treeDefaultClose: true,
+                        treeSpid: 0,
+                        treeIdName: 'id',
+                        treePidName: 'pid',
+                        elem: '#auth-table',
+                        url: "{:Url('setting.system_menus/menuJson')}",
+                        page: false,
+                        cols: [
+                            [
+                                { type: 'numbers' },
+                                { field: 'menu_name', minWidth: 200, title: '权限名称' },
+                                { field: 'module', align: 'center',title: '模块名',width:80 },
+                                { field: 'controller', align: 'center',title: '控制器' },
+                                { field: 'action', align: 'center',title: '动作' },
+                                { field: 'is_show', align: 'center',title: '是否显示',width:100,
+                                    templet: function(d) {
+                                        if (d.is_show == 1) {
+                                            return '<i class="fa fa-check text-navy"></i>';
+                                        } else {
+                                            return '<i class="fa fa-close text-danger"></i>';
+                                        }
+                                    }
+                                },
+                                {
+                                    field: 'op',
+                                    align: 'center',
+                                    templet: function(d) {
+                                        return '<button class="btn btn-success btn-xs" type="button"  onclick="$eb.createModalFrame(this.innerText,\'/scm/setting.system_menus/create/cid/'+d.id+'.html\')"><i class="fa fa-plus"></i> 菜单</button> <button class="btn btn-info btn-xs" type="button"  onclick="$eb.createModalFrame(this.innerText,\'/scm/setting.system_menus/edit/id/'+d.id+'.html\')"><i class="fa fa-pencil"></i> 编辑</button> <button class="btn btn-danger btn-xs" data-url="/scm/setting.system_menus/delete/id/'+d.id+'.html\" type="button" onclick="deleteMenu(this)"><i class="fa fa-trash"></i> 删除</button>';
+                                    },
+                                    title: '操作'
+                                }
+                            ]
+                        ],
+                        done: function() {
+                            layer.closeAll('loading');
+                        }
+                    });
+
+                    $('#btn-expand').click(function() {
+                        treetable.expandAll('#auth-table');
+                    });
+
+                    $('#btn-fold').click(function() {
+                        treetable.foldAll('#auth-table');
+                    });
+
+                    $('#btn-search').click(function() {
+                        var keyword = $('#edt-search').val();
+                        var searchCount = 0;
+                        $('#auth-table').next('.treeTable').find('.layui-table-body tbody tr td').each(function() {
+                            $(this).css('background-color', 'transparent');
+                            var text = $(this).text();
+                            if (keyword != '' && text.indexOf(keyword) >= 0) {
+                                $(this).css('background-color', 'rgba(250,230,160,0.5)');
+                                if (searchCount == 0) {
+                                    treetable.expandAll('#auth-table');
+                                    $('html,body').stop(true);
+                                    $('html,body').animate({ scrollTop: $(this).offset().top - 150 }, 500);
+                                }
+                                searchCount++;
+                            }
+                        });
+                        if (keyword == '') {
+                            layer.msg("请输入搜索内容", { icon: 5 });
+                        } else if (searchCount == 0) {
+                            layer.msg("没有匹配结果", { icon: 5 });
+                        }
+                    });
+                });
+                </script>
+                {include file="public/inner_page"}
+            </div>
+        </div>
+    </div>
+</div>
+{/block}
+
+{block name="script"}
+<script>
+function deleteMenu(o) {
+    var _this = $(o),
+        url = _this.data('url');
+    $eb.$swal('delete', function() {
+        $eb.axios.get(url).then(function(res) {
+            console.log(res);
+            if (res.status == 200 && res.data.code == 200) {
+                $eb.$swal('success', res.data.msg);
+                _this.parents('tr').remove();
+            } else
+                return Promise.reject(res.data.msg || '删除失败')
+        }).catch(function(err) {
+            $eb.$swal('error', err);
+        });
+    })
+};
+</script>
+{/block}
