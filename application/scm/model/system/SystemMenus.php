@@ -71,9 +71,10 @@ class SystemMenus extends ModelBasic
         return self::tidyMenuTier(false,$ruleList);
     }
 
-    public static function ruleListForJson()
+    public static function ruleListForJson($id)
     {
-        $ruleList = \think\Db::query("SELECT id,menu_name,module,controller,action,is_show,icon,pid FROM system_menus ORDER BY sort DESC");
+        $where = $id == "" ? "" : " WHERE is_show = ".$id;
+        $ruleList = \think\Db::query("SELECT id,menu_name,module,controller,action,is_show,icon,pid FROM system_menus ".$where." ORDER BY sort DESC");
         return $ruleList;
     }
 
@@ -114,9 +115,21 @@ class SystemMenus extends ModelBasic
 
     public static function delMenu($id)
     {
-        if(self::where('pid',$id)->count())
-            return self::setErrorInfo('请先删除改菜单下的子菜单!');
-        return self::del($id);
+        $list[] = $id;
+        self::findChildren($id,$list);
+        return self::del(implode(",",$list));
+    }
+
+    
+    protected static function findChildren($id,&$list) {
+        $children = self::where('pid',$id)->select();
+ 
+        if(count($children) > 0)  {
+            foreach ($children as $v) {
+                array_push($list, $v->id);
+                self::findChildren($v->id,$list);
+            }
+        }
     }
 
     public static function getAdminPage($params)

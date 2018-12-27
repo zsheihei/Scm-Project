@@ -2,6 +2,7 @@ layui.define(['layer', 'table'], function (exports) {
     var $ = layui.jquery;
     var layer = layui.layer;
     var table = layui.table;
+    var setting = "";
 
     var treetable = {
         // 渲染树形表格
@@ -11,6 +12,7 @@ layui.define(['layer', 'table'], function (exports) {
                 return;
             }
 
+            setting = param;
             // 获取数据
             if (param.data) {
                 treetable.init(param, param.data);

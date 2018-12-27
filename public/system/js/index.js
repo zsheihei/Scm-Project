@@ -177,12 +177,13 @@ setTimeout(function(){
                             type: 2,
                             title:title,
                             area: [(opt.w || 750)+'px', (opt.h || 680)+'px'],
-                            fixed: false, //不固定
+                            fixed: true, //不固定
                             maxmin: true,
                             moveOut:false,//true  可以拖出窗外  false 只能在窗内拖
                             anim:5,//出场动画 isOutAnim bool 关闭动画
                             offset:'auto',//['100px','100px'],//'auto',//初始位置  ['100px','100px'] t[ 上 左]
-                            shade:0,//遮罩
+                            shade:0.3,//遮罩
+							shadeClose:true,//点击遮罩关闭
                             resize:true,//是否允许拉伸
                             content: src,//内容
                             move:'.layui-layer-title',// 默认".layui-layer-title",// 触发拖动的元素

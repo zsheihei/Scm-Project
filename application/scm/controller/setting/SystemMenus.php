@@ -45,10 +45,15 @@ class SystemMenus extends Auth
         return $this->fetch();
     }
 
-    public function menuJson()
+    /**
+     * 显示JSON格式的菜单
+     * 
+     * @return Json
+     */
+    public function menuJson($id="")
     {
-        $arr = MenusModel::ruleListForJson();
-        return json($arr);
+        $menus = MenusModel::ruleListForJson($id);
+        return json($menus);
     }
 
 

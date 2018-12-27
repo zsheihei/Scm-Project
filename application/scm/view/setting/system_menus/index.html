@@ -14,7 +14,7 @@
                     <div class="m-b m-l">
                         <form action="" class="form-inline">
 
-                            <select name="is_show" aria-controls="editable" class="form-control input-sm">
+                            <select name="is_show" aria-controls="editable" id='ddl_show' class="form-control input-sm">
                                 <option value="">是否显示</option>
                                 <option value="1">显示</option>
                                 <option value="0">不显示</option>
@@ -96,13 +96,22 @@
                         treetable.foldAll('#auth-table');
                     });
 
+
                     $('#btn-search').click(function() {
                         var keyword = $('#edt-search').val();
+                        var show = $("#ddl_show").val();
                         var searchCount = 0;
                         $('#auth-table').next('.treeTable').find('.layui-table-body tbody tr td').each(function() {
                             $(this).css('background-color', 'transparent');
                             var text = $(this).text();
+
                             if (keyword != '' && text.indexOf(keyword) >= 0) {
+                                if (show != "") {
+                                    if (show == 1 && $(this).parent().find(".fa-check").length <= 0)
+                                        return;
+                                    if (show == 0 && $(this).parent().find(".fa-close").length <= 0)
+                                        return;
+                                }
                                 $(this).css('background-color', 'rgba(250,230,160,0.5)');
                                 if (searchCount == 0) {
                                     treetable.expandAll('#auth-table');
@@ -111,11 +120,15 @@
                                 }
                                 searchCount++;
                             }
+
                         });
+
                         if (keyword == '') {
                             layer.msg("请输入搜索内容", { icon: 5 });
                         } else if (searchCount == 0) {
                             layer.msg("没有匹配结果", { icon: 5 });
+                        } else {
+                            layer.msg("成功为您找到"+searchCount+"条记录。",{icon:1});
                         }
                     });
                 });
