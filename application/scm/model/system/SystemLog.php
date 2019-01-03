@@ -36,6 +36,9 @@ class SystemLog extends ModelBasic
         $controller = $request->controller();
         $action = $request->action();
         $route = $request->route();
+        $post = $request->post()?json_encode($request->post(),JSON_UNESCAPED_UNICODE):"";
+
+
         $data = [
             'method'=>$request->method(),
             'admin_id'=>$adminId,
@@ -43,6 +46,7 @@ class SystemLog extends ModelBasic
             'path'=>SystemMenus::getAuthName($action,$controller,$module,$route),
             'page'=>SystemMenus::getVisitName($action,$controller,$module,$route)?:'未知',
             'ip'=>$request->ip(),
+            'param'=>$post,
             'type'=>$type
         ];
         return self::set($data);
